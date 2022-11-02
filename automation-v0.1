@@ -1,0 +1,11 @@
+sudo apt update -y
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+sudo apt install awscli
+cd /var/log/apache2/
+tar cvf viswanathn-httpd-logs-$(date '+%d%m%Y-%H%M%S').tar /var/log/apache2/
+mv viswanathn-httpd-logs-$(date '+%d%m%Y-%H%M%S').tar /tmp/
+aws s3 \
+cp /tmp/viswanathn-httpd-logs-$(date '+%d%m%Y-%H%M%S').tar \
+s3://upgrad-viswanathn/viswanathn-httpd-logs-$(date '+%d%m%Y-%H%M%S').tar
