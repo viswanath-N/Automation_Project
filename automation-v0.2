@@ -11,4 +11,5 @@ aws s3 \
 cp /tmp/viswanathn-httpd-logs-$(date '+%d%m%Y-%H%M%S').tar \
 s3://upgrad-viswanathn/viswanathn-httpd-logs-$(date '+%d%m%Y-%H%M%S').tar
 sudo echo httpd-log $(date '+%d%m%Y-%H%M%S') cut stat >> /var/www/html/inventory.html
+sudo echo * 1 * * * /etc/cron.d/automation /root/Automation_Project/automation.sh
 sudo crontab /etc/cron.d/automation
